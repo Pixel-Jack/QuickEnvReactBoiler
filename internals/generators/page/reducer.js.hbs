@@ -1,0 +1,19 @@
+/*
+ *
+ * {{ properCase name }}Page reducer
+ *
+ */
+
+import { createReducer } from 'reduxsauce';
+import { fromJS } from 'immutable';
+import { {{ camelCase name }}Types as Types } from './actions';
+
+export const initialState = fromJS({});
+
+function defaultAction(state, action) {
+  return state;
+}
+
+export default createReducer(initialState, {
+  [Types.DEFAULT_ACTION]: defaultAction,
+});

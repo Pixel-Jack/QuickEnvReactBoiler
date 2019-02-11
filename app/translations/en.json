@@ -1,0 +1,7 @@
+{
+  "app.containers.NotFoundPage.header": "This is the NotFoundPage container!",
+  "app.pages.HomePage.header": "This is the HomePage container!",
+  "app.pages.HomePage.title": "Build your ideas!",
+  "app.pages.HomePage.description": "YOUR_PROJECT homepage",
+  "app.pages.ProjectsPage.header": "This is the ProjectsPage container!"
+}

@@ -1,0 +1,12 @@
+import {{ camelCase name }}Actions, { {{ camelCase name }}Types as types } from '../actions';
+
+describe('{{ properCase name }} actions', () => {
+  describe('Default Action', () => {
+    it('has a type of DEFAULT_ACTION', () => {
+      const expected = {
+        type: types.DEFAULT_ACTION,
+      };
+      expect({{ camelCase name }}Actions.defaultAction()).toEqual(expected);
+    });
+  });
+});

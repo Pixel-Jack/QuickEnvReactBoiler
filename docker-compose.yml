@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  webapp:
+    build: .
+    container_name: ${ENVIRONMENT}_webapp
+    env_file:
+      - .env
+    command: ["node", "./internals/scripts/start.js"]
+    volumes:
+      - .:/app
+      - /app/node_modules

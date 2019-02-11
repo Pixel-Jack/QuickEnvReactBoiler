@@ -1,0 +1,7 @@
+{
+  "app.containers.NotFoundPage.header": "Page introuvable",
+  "app.pages.HomePage.header": "Ceci est la page d'accueil",
+  "app.pages.HomePage.title": "Construisez vos idées !",
+  "app.pages.HomePage.description": "Page d'accueil de YOUR_PROJECT",
+  "app.pages.ProjectsPage.header": "Ceci est la page des projets"
+}

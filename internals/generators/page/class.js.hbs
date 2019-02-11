@@ -1,0 +1,76 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet';
+import { FormattedMessage, injectIntl } from 'react-intl';
+{{#if wantActionsAndReducer}}
+import { createStructuredSelector } from 'reselect';
+{{/if}}
+import { compose } from 'redux';
+
+{{#if wantSaga}}
+import injectSaga from 'utils/injectSaga';
+{{/if}}
+{{#if wantActionsAndReducer}}
+import injectReducer from 'utils/injectReducer';
+import makeSelect{{properCase name}} from './selectors';
+import actions from './actions';
+import reducer from './reducer';
+{{/if}}
+{{#if wantSaga}}
+import saga from './saga';
+{{/if}}
+import messages from './messages';
+
+export class {{ properCase name }}Page extends React.PureComponent {
+  render() {
+    const { intl } = this.props;
+
+    return (
+      <div>
+        <Helmet>
+          <title>{intl.formatMessage(messages.title)}</title>
+          <meta name="description" content={intl.formatMessage(messages.description)} />
+        </Helmet>
+        <FormattedMessage {...messages.header} />
+      </div>
+    );
+  }
+}
+
+{{ properCase name }}Page.propTypes = {};
+
+{{#if wantActionsAndReducer}}
+const mapStateToProps = createStructuredSelector({
+  {{ camelCase name }}: makeSelect{{properCase name}}(),
+});
+
+function mapDispatchToProps(dispatch) {
+  return {
+    defaultAction: dispatch(actions.defaultAction()),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+const withReducer = injectReducer({ key: '{{ camelCase name }}', reducer });
+{{else}}
+const withConnect = connect();
+{{/if}}
+{{#if wantSaga}}
+const withSaga = injectSaga({ key: '{{ camelCase name }}', saga });
+{{/if}}
+
+export default compose(
+{{#if wantActionsAndReducer}}
+  withReducer,
+{{/if}}
+{{#if wantSaga}}
+  withSaga,
+{{/if}}
+  withConnect,
+  injectIntl,
+)({{ properCase name }}Page);
